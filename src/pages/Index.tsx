@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.webp";
 import servicesBg from "@/assets/services-bg.jpg";
-import ctaBg from "@/assets/cta-bg.webp";
+import ctaBg from "@/assets/flack-hero-slikopleskar-barvanje-stanovanja-ljubljana.png";
 import whyUsBg from "@/assets/why-us-bg.webp";
 import serviceSlikopleskarstvo from "@/assets/flack-slikopleskarstvo-barvanje-stene-ljubljana.jpg";
 import serviceFasaderstvo from "@/assets/flack-fasaderstvo-omet-gradbeni-oder-ljubljana.jpg";
@@ -930,7 +930,7 @@ const Index = () => {
       {/* CTA */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={ctaBg} alt="Gradbena ekipa" className="w-full h-full object-cover" loading="lazy" />
+          <img src={ctaBg} alt="Slikopleskar FLACK z valjčkom barva steno v praznem stanovanju, v majici z logotipom FLACK" className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-[hsl(215,60%,8%)]/70 via-[hsl(215,60%,10%)]/50 to-[hsl(215,60%,12%)]/40" />
         </div>
         {/* Floating shapes */}
