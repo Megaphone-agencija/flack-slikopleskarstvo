@@ -28,7 +28,6 @@ import servicesBg from "@/assets/services-bg.jpg";
 import ctaBg from "@/assets/flack-hero-slikopleskar-barvanje-stanovanja-ljubljana.jpeg";
 import whyUsBg from "@/assets/why-us-bg.webp";
 import serviceSlikopleskarstvo from "@/assets/flack-slikopleskarstvo-barvanje-stene-ljubljana.jpg";
-import serviceFasaderstvo from "@/assets/flack-fasaderstvo-omet-gradbeni-oder-ljubljana.jpg";
 import serviceZakljucnaDela from "@/assets/flack-manjsa-zakljucna-dela-prestavitev-vticnic-ljubljana.jpg";
 
 /* ─── Web3Forms ─── */
@@ -158,12 +157,6 @@ const services = [
     ],
   },
   {
-    img: serviceFasaderstvo,
-    title: "Fasaderstvo",
-    alt: "Fasaderja FLACK na odru pri nanašanju ometa na fasado hiše, v majicah z logotipom FLACK",
-    details: ["Fasade do 300 m²", "Višina do 7 m", "Priprava podlage", "Zaključni omet"],
-  },
-  {
     img: serviceZakljucnaDela,
     title: "Manjša zaključna dela",
     alt: "Mojster FLACK pri prestavitvi vtičnice z izvijačem, v beli majici z logotipom FLACK",
@@ -179,7 +172,7 @@ const advantages = [
 
 const stats = [
   { value: 350, suffix: "+", label: "opleskanih prostorov" },
-  { value: 50, suffix: "+", label: "izvedenih fasad" },
+  { value: 50, suffix: "+", label: "izvedenih projektov" },
   { value: 15, suffix: "+", label: "let izkušenj" },
   { value: 4.8, suffix: "", label: "ocena strank", decimals: 1 },
 ];
@@ -233,7 +226,7 @@ const CountUp = ({ target, suffix, decimals = 0 }: { target: number; suffix: str
 
 /* ─── Marquee ticker for social proof ─── */
 const MarqueeTicker = () => {
-  const items = ["Cena na ključ", "Vsi mojstri, en račun", "Slikopleskarstvo", "Fasade", "Manjša zaključna dela", "350+ opleskanih prostorov", "50+ fasad", "15+ let izkušenj", "Ocena 4.8/5"];
+  const items = ["Cena na ključ", "Vsi mojstri, en račun", "Slikopleskarstvo", "Manjša zaključna dela", "350+ opleskanih prostorov", "50+ projektov", "15+ let izkušenj", "Ocena 4.8/5"];
   return (
     <div className="relative overflow-hidden bg-accent py-3">
       <motion.div
@@ -256,7 +249,7 @@ const MarqueeTicker = () => {
 const faqs = [
   {
     q: "Na katerem območju delate?",
-    a: "Delujemo izključno na območju Ljubljane in okolice. Če niste prepričani, ali smo na voljo za vašo lokacijo, nas pokličite ali pošljite povpraševanje in vam takoj sporočimo.",
+    a: "Delujemo izključno na območju Ljubljane, okolice in Gorenjske. Če niste prepričani, ali smo na voljo za vašo lokacijo, nas pokličite ali pošljite povpraševanje in vam takoj sporočimo.",
   },
   {
     q: "Ali pridete na ogled in je ponudba brezplačna?",
@@ -346,7 +339,7 @@ const inputClass =
 const formTrust = [
   { icon: Clock, text: "Odgovor v 24 urah" },
   { icon: Shield, text: "Cena na ključ, brez skritih stroškov" },
-  { icon: MapPin, text: "Ljubljana in okolica" },
+  { icon: MapPin, text: "Ljubljana, okolica in Gorenjska" },
   { icon: Star, text: "Ocena strank 4.8/5" },
 ];
 
@@ -403,7 +396,7 @@ const ContactSection = () => {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/30 mb-5"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-accent">Ljubljana in okolica</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-accent">Ljubljana, okolica in Gorenjska</span>
             </motion.div>
 
             <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
@@ -413,7 +406,7 @@ const ContactSection = () => {
             <AnimatedLine className="max-w-[80px] mb-6" />
             <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed mb-8 max-w-md">
               Izpolnite obrazec in v <span className="text-foreground font-semibold">24 urah</span> se vam oglasimo z
-              nezavezujočo ponudbo. Delamo izključno na območju <span className="text-foreground font-semibold">Ljubljane in okolice</span> — vsi mojstri, en račun, dogovorjen rok.
+              nezavezujočo ponudbo. Delamo izključno na območju <span className="text-foreground font-semibold">Ljubljane, okolice in Gorenjske</span> — vsi mojstri, en račun, dogovorjen rok.
             </motion.p>
 
             {/* Trust builders */}
@@ -439,13 +432,13 @@ const ContactSection = () => {
                   <p className="text-sm font-bold text-foreground">040 296 555</p>
                 </div>
               </a>
-              <a href="mailto:sliko.flackdoo@gmail.com" className="flex items-center gap-3 group">
+              <a href="mailto:info@flack.si" className="flex items-center gap-3 group">
                 <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                   <Mail className="h-5 w-5 text-accent" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground font-medium">Pišite</p>
-                  <p className="text-sm font-bold text-foreground break-all">sliko.flackdoo@gmail.com</p>
+                  <p className="text-sm font-bold text-foreground break-all">info@flack.si</p>
                 </div>
               </a>
             </motion.div>
@@ -588,7 +581,7 @@ const Index = () => {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 backdrop-blur-sm mb-5 self-start"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/90">Ljubljana in okolica</span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/90">Ljubljana, okolica in Gorenjska</span>
             </motion.div>
 
             {/* Animated accent line before heading */}
@@ -615,7 +608,7 @@ const Index = () => {
               </motion.span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg md:text-xl text-primary-foreground/75 mb-10 leading-relaxed max-w-xl font-medium">
-              FLACK d.o.o. — slikopleskarstvo in fasade z leti izkušenj. Čiste linije, urejeno delovišče in dogovorjen rok. Brez presenečenj.
+              FLACK d.o.o. — slikopleskarstvo in zaključna dela z leti izkušenj. Čiste linije, urejeno delovišče in dogovorjen rok. Brez presenečenj.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="text-base font-bold bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg shadow-accent/25 h-12 px-8 group">
@@ -722,10 +715,10 @@ const Index = () => {
             <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mt-2 mb-4">NAŠE STORITVE</motion.h2>
             <AnimatedLine className="max-w-[80px] mx-auto mt-4" />
             <motion.p variants={fadeUp} className="text-muted-foreground max-w-xl mx-auto mt-4">
-              Slikopleskarstvo, fasade in zaključna dela za stanovanjske in poslovne objekte — <span className="text-foreground font-semibold">na območju Ljubljane in okolice.</span>
+              Slikopleskarstvo in zaključna dela za stanovanjske in poslovne objekte — <span className="text-foreground font-semibold">na območju Ljubljane, okolice in Gorenjske.</span>
             </motion.p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5">
             {services.map((s, i) => (
               <motion.div
                 key={s.title}

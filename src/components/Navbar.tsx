@@ -214,13 +214,13 @@ const Navbar = () => {
                   <p className="text-sm font-bold text-foreground group-hover:text-accent transition-colors">040 296 555</p>
                 </div>
               </a>
-              <a href="mailto:sliko.flackdoo@gmail.com" className="flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-muted transition-colors group">
+              <a href="mailto:info@flack.si" className="flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-muted transition-colors group">
                 <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
                   <Mail className="h-4 w-4 text-accent" />
                 </div>
-                <div className="leading-tight min-w-0">
+                <div className="leading-tight">
                   <p className="text-[11px] text-muted-foreground font-medium">Pišite</p>
-                  <p className="text-sm font-bold text-foreground group-hover:text-accent transition-colors truncate">sliko.flackdoo@gmail.com</p>
+                  <p className="text-sm font-bold text-foreground group-hover:text-accent transition-colors">info@flack.si</p>
                 </div>
               </a>
               <Button
