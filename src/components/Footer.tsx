@@ -51,7 +51,7 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-5 text-sm uppercase tracking-widest text-primary-foreground/80">Storitve</h4>
             <ul className="space-y-3">
-              {["Slikopleskarstvo", "Fasade", "Kitanje sten in odprava razpok", "Gletanje sten", "Barvanje lesa in kovin", "Zaključna dela"].map((s) => (
+              {["Slikopleskarstvo", "Fasade", "Manjša zaključna dela"].map((s) => (
                 <li key={s}>
                   <span className="text-sm text-primary-foreground/55">{s}</span>
                 </li>
