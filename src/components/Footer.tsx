@@ -14,7 +14,7 @@ const Footer = () => {
               <h3 className="text-2xl font-black tracking-wide">FLACK</h3>
             </div>
             <p className="text-primary-foreground/60 text-sm leading-relaxed mb-6">
-              Slikopleskarstvo, fasade, kitanje sten in zaključna dela v gradbeništvu. Kakovostna izvedba in urejena površina od prvega do zadnjega poteza.
+              Slikopleskarstvo, fasade, kitanje sten in zaključna dela v gradbeništvu. Kakovostna izvedba in urejena površina od prvega do zadnjega zamaha s čopičem.
             </p>
             <div className="flex items-center gap-2">
               <div className="w-10 h-1 bg-accent rounded-full" />
