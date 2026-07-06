@@ -499,8 +499,40 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-semibold text-foreground mb-1.5">Opis projekta</label>
-                  <textarea id="message" name="message" rows={4} placeholder="Na kratko opišite, kaj potrebujete (npr. lokacija, velikost prostora/objekta, željen rok) …" className={`${inputClass} resize-none`} />
+                  <label htmlFor="paintScope" className="block text-xs font-semibold text-foreground mb-1.5">Kaj želite prebarvati?</label>
+                  <select id="paintScope" name="paintScope" defaultValue="" className={inputClass}>
+                    <option value="" disabled>Izberite možnost …</option>
+                    <option value="1–3 prostori">1–3 prostori</option>
+                    <option value="Celo stanovanje">Celo stanovanje</option>
+                    <option value="Celo hišo">Celo hišo</option>
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="paintSize" className="block text-xs font-semibold text-foreground mb-1.5">Kako velik je prostor, ki ga želite prebarvati?</label>
+                    <select id="paintSize" name="paintSize" defaultValue="" className={inputClass}>
+                      <option value="" disabled>Izberite velikost …</option>
+                      <option value="30–40 m²">30–40 m²</option>
+                      <option value="50–80 m²">50–80 m²</option>
+                      <option value="80–100 m²">80–100 m²</option>
+                      <option value="100 m²+">100 m²+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="renovationTiming" className="block text-xs font-semibold text-foreground mb-1.5">Kdaj potrebujete prenovo?</label>
+                    <select id="renovationTiming" name="renovationTiming" defaultValue="" className={inputClass}>
+                      <option value="" disabled>Izberite časovni okvir …</option>
+                      <option value="Takoj (v naslednjem tednu ali dveh)">Takoj (v naslednjem tednu ali dveh)</option>
+                      <option value="V enem mesecu">V enem mesecu</option>
+                      <option value="Več kot 3 mesecih">Več kot 3 mesecih</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-xs font-semibold text-foreground mb-1.5">Dodajte še kakšne pomembne podrobnosti glede vašega projekta, da bomo lažje razumeli vaše potrebe.</label>
+                  <textarea id="message" name="message" rows={4} placeholder="Dodajte še kakšne pomembne podrobnosti glede vašega projekta, da bomo lažje razumeli vaše potrebe." className={`${inputClass} resize-none`} />
                 </div>
 
                 {status === "error" && (
