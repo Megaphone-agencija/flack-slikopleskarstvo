@@ -747,14 +747,14 @@ const Index = () => {
                   <div className="w-8 h-[2px] bg-accent mb-3" />
                   <h3 className="text-2xl font-bold text-primary-foreground tracking-wide">{s.title}</h3>
                 </div>
-                <div className="absolute inset-0 bg-accent/92 flex flex-col items-center justify-center p-8 text-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
-                  <Star className="h-6 w-6 text-accent-foreground/80 mb-4" />
-                  <h3 className="text-xl font-bold text-accent-foreground mb-4 tracking-wide">{s.title}</h3>
+                <div className="absolute inset-0 bg-[hsl(215,60%,8%)]/85 backdrop-blur-[2px] flex flex-col items-center justify-center p-8 text-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
+                  <Star className="h-6 w-6 text-white/80 mb-4" />
+                  <h3 className="text-xl font-bold text-white mb-4 tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{s.title}</h3>
                   <div className="flex flex-wrap justify-center gap-2.5 max-w-sm">
                     {s.details.map((detail) => (
                       <span
                         key={detail}
-                        className="border border-accent-foreground/35 bg-background/10 px-3 py-1.5 text-accent-foreground text-[13px] font-semibold leading-none shadow-sm backdrop-blur-[2px]"
+                        className="border border-white/80 bg-white px-3 py-1.5 text-[14px] font-bold leading-none text-slate-900 shadow-md"
                       >
                         {detail}
                       </span>
