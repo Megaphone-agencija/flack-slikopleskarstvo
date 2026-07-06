@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.webp";
 import servicesBg from "@/assets/services-bg.jpg";
-import ctaBg from "@/assets/flack-hero-slikopleskar-barvanje-stanovanja-ljubljana.png";
+import ctaBg from "@/assets/flack-hero-slikopleskar-barvanje-stanovanja-ljubljana.jpeg";
 import whyUsBg from "@/assets/why-us-bg.webp";
 import serviceSlikopleskarstvo from "@/assets/flack-slikopleskarstvo-barvanje-stene-ljubljana.jpg";
 import serviceFasaderstvo from "@/assets/flack-fasaderstvo-omet-gradbeni-oder-ljubljana.jpg";
