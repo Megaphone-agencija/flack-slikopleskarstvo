@@ -233,7 +233,7 @@ const CountUp = ({ target, suffix, decimals = 0 }: { target: number; suffix: str
 
 /* ─── Marquee ticker for social proof ─── */
 const MarqueeTicker = () => {
-  const items = ["Cena na ključ", "Vsi mojstri, en račun", "Slikopleskarstvo", "Fasade", "Gletanje sten", "Barvanje lesa in kovin", "Zaključna dela", "350+ opleskanih prostorov", "50+ fasad", "15+ let izkušenj", "Ocena 4.8/5"];
+  const items = ["Cena na ključ", "Vsi mojstri, en račun", "Slikopleskarstvo", "Fasade", "Kitanje sten", "Manjša zaključna dela", "350+ opleskanih prostorov", "50+ fasad", "15+ let izkušenj", "Ocena 4.8/5"];
   return (
     <div className="relative overflow-hidden bg-accent py-3">
       <motion.div
@@ -722,7 +722,7 @@ const Index = () => {
             <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mt-2 mb-4">NAŠE STORITVE</motion.h2>
             <AnimatedLine className="max-w-[80px] mx-auto mt-4" />
             <motion.p variants={fadeUp} className="text-muted-foreground max-w-xl mx-auto mt-4">
-              Slikopleskarstvo, fasade in zaključna dela za stanovanjske in poslovne objekte — <span className="text-foreground font-semibold">na območju Ljubljane in okolice.</span>
+              Slikopleskarstvo, fasade, kitanje sten in zaključna dela za stanovanjske in poslovne objekte — <span className="text-foreground font-semibold">na območju Ljubljane in okolice.</span>
             </motion.p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
