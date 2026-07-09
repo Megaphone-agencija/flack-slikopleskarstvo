@@ -9,6 +9,7 @@ import logo from "@/assets/logo.webp";
 const navLinks = [
   { label: "Domov", id: "domov" },
   { label: "Storitve", id: "storitve" },
+  { label: "Reference", id: "reference" },
   { label: "Zakaj nas", id: "zakaj-nas" },
   { label: "Mnenja", id: "mnenja" },
   { label: "Vprašanja", id: "faq" },

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Building2,
@@ -22,6 +23,7 @@ import {
   Send,
   Loader2,
   HelpCircle,
+  Images,
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.webp";
 import servicesBg from "@/assets/services-bg.jpg";
@@ -29,6 +31,19 @@ import ctaBg from "@/assets/flack-hero-slikopleskar-barvanje-stanovanja-ljubljan
 import whyUsBg from "@/assets/why-us-bg.webp";
 import serviceSlikopleskarstvo from "@/assets/flack-slikopleskarstvo-barvanje-stene-ljubljana.jpg";
 import serviceZakljucnaDela from "@/assets/flack-manjsa-zakljucna-dela-prestavitev-vticnic-ljubljana.jpg";
+import flack1 from "@/assets/flack1.jpg";
+import flack2 from "@/assets/flack2.jpg";
+import flack3 from "@/assets/flack3.jpg";
+import flack4 from "@/assets/flack4.jpg";
+import flack5 from "@/assets/flack5.jpg";
+import flack6 from "@/assets/flack6.jpg";
+import flack7 from "@/assets/flack7.jpg";
+import flack8 from "@/assets/flack8.jpg";
+import flack9 from "@/assets/flack9.jpg";
+import flack10 from "@/assets/flack10.jpg";
+import flack11 from "@/assets/flack11.jpg";
+import flack12 from "@/assets/flack12.jpg";
+import flack13 from "@/assets/flack13.jpg";
 
 /* ─── Web3Forms ─── */
 // TODO: zamenjaj s svojim Web3Forms access key-em (https://web3forms.com — brezplačno).
@@ -178,13 +193,31 @@ const stats = [
 ];
 
 const testimonials = [
-  { quote: "Fasado na hiši so izvedli izjemno natančno in v dogovorjenem roku. Videz hiše je popolnoma drugačen – res smo navdušeni!", name: "Marko P.", location: "Ljubljana", project: "Fasada" },
+  { quote: "Rok so spoštovali, izvedba je bila natančna in profesionalna.", name: "Roberto T.", location: "Ljubljana", project: "Slikopleskarstvo" },
   { quote: "Notranje slikopleskarsko delo je bilo opravljeno brezhibno – čiste linije, enakomerne stene. Prostor izgleda popolnoma prenovljen.", name: "Mojca S.", location: "Trzin", project: "Slikopleskarstvo" },
   { quote: "Razpoke na stenah so popolnoma odpravili in stene zakitali – zdaj so gladke, kot da razpok nikoli ni bilo.", name: "Ana K.", location: "Domžale", project: "Kitanje sten in odprava razpok" },
-  { quote: "Stene po gletanju so popolnoma ravne, brez enega samega hriba. Barvanje je bilo nato pravi užitek gledati.", name: "Tomaž R.", location: "Grosuplje", project: "Gletanje sten" },
+  { quote: "Komunikacija je bila prijazna, dogovore so držali in svetovanje je pomagalo.", name: "Sabina S.", location: "Ljubljana", project: "Prenova na ključ" },
   { quote: "Prebarvali so nam ograjo in okenske okvirje – dolgotrajna zaščita in lep videz. Zelo priporočam!", name: "Janez L.", location: "Ig", project: "Barvanje lesa" },
   { quote: "Zaključna dela so bila izvedena z neverjetno natančnostjo. Vsak detajl je na svojem mestu – profesionalci v pravem pomenu besede.", name: "Nina M.", location: "Škofljica", project: "Zaključna dela" },
 ];
+
+const referenceImages = [
+  { src: flack1, alt: "Referenčno slikopleskarsko delo FLACK 1" },
+  { src: flack2, alt: "Referenčno slikopleskarsko delo FLACK 2" },
+  { src: flack3, alt: "Referenčno slikopleskarsko delo FLACK 3" },
+  { src: flack4, alt: "Referenčno slikopleskarsko delo FLACK 4" },
+  { src: flack5, alt: "Referenčno slikopleskarsko delo FLACK 5" },
+  { src: flack6, alt: "Referenčno slikopleskarsko delo FLACK 6" },
+  { src: flack7, alt: "Referenčno slikopleskarsko delo FLACK 7" },
+  { src: flack8, alt: "Referenčno slikopleskarsko delo FLACK 8" },
+  { src: flack9, alt: "Referenčno slikopleskarsko delo FLACK 9" },
+  { src: flack10, alt: "Referenčno slikopleskarsko delo FLACK 10" },
+  { src: flack11, alt: "Referenčno slikopleskarsko delo FLACK 11" },
+  { src: flack12, alt: "Referenčno slikopleskarsko delo FLACK 12" },
+  { src: flack13, alt: "Referenčno slikopleskarsko delo FLACK 13" },
+];
+
+const featuredReferenceImages = [referenceImages[1], referenceImages[4], referenceImages[6]];
 
 /* ─── CountUp ─── */
 const CountUp = ({ target, suffix, decimals = 0 }: { target: number; suffix: string; decimals?: number }) => {
@@ -513,10 +546,10 @@ const ContactSection = () => {
                     <label htmlFor="paintSize" className="block text-xs font-semibold text-foreground mb-1.5">Kako velik je prostor, ki ga želite prebarvati?</label>
                     <select id="paintSize" name="paintSize" defaultValue="" className={inputClass}>
                       <option value="" disabled>Izberite velikost …</option>
-                      <option value="30–40 m²">30–40 m²</option>
-                      <option value="50–80 m²">50–80 m²</option>
-                      <option value="80–100 m²">80–100 m²</option>
-                      <option value="100 m²+">100 m²+</option>
+                      <option value="0–100 m²">0–100 m²</option>
+                      <option value="100–200 m²">100–200 m²</option>
+                      <option value="200–300 m²">200–300 m²</option>
+                      <option value="300 m²+">300 m²+</option>
                     </select>
                   </div>
                   <div>
@@ -531,7 +564,7 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-semibold text-foreground mb-1.5">Dodajte še kakšne pomembne podrobnosti glede vašega projekta, da bomo lažje razumeli vaše potrebe.</label>
+                  <label htmlFor="message" className="block text-xs font-semibold text-foreground mb-1.5">Dodatne informacije (neobvezno)</label>
                   <textarea id="message" name="message" rows={4} placeholder="Dodajte še kakšne pomembne podrobnosti glede vašega projekta, da bomo lažje razumeli vaše potrebe." className={`${inputClass} resize-none`} />
                 </div>
 
@@ -559,6 +592,114 @@ const ContactSection = () => {
             )}
           </motion.div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+const ReferencesSection = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(featuredReferenceImages[0]);
+
+  const openGallery = (image = featuredReferenceImages[0]) => {
+    setSelectedImage(image);
+    setOpen(true);
+  };
+
+  return (
+    <section id="reference" className="py-24 bg-background relative overflow-hidden scroll-mt-20">
+      <GridPattern className="top-0 right-0 text-foreground opacity-40" />
+      <DotCluster className="bottom-12 left-16 text-muted-foreground hidden md:block" />
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <motion.div
+          className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        >
+          <div className="max-w-2xl">
+            <motion.span variants={fadeUp} className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-widest">
+              <Images className="h-4 w-4" /> Reference
+            </motion.span>
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mt-2 mb-4">
+              IZBRANA DELA
+            </motion.h2>
+            <AnimatedLine className="max-w-[80px] mt-4" />
+            <motion.p variants={fadeUp} className="text-muted-foreground mt-5 leading-relaxed">
+              Primeri izvedenih slikopleskarskih in zaključnih del. V galeriji si lahko ogledate več detajlov iz naših projektov.
+            </motion.p>
+          </div>
+
+          <Button
+            type="button"
+            size="lg"
+            onClick={() => openGallery()}
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold self-start lg:self-auto"
+          >
+            Več
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          {featuredReferenceImages.map((image, i) => (
+            <motion.button
+              key={image.alt}
+              type="button"
+              onClick={() => openGallery(image)}
+              aria-label="Odpri galerijo referenc"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={i}
+              variants={scaleIn}
+              className="group relative h-[320px] overflow-hidden rounded-2xl border border-border bg-muted shadow-lg"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(215,60%,8%)]/35 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
+            </motion.button>
+          ))}
+        </div>
+
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent className="max-h-[94vh] max-w-[96vw] overflow-y-auto border-border p-4 sm:p-6 xl:max-w-7xl">
+            <DialogHeader className="pr-8">
+              <DialogTitle className="text-2xl font-black tracking-wide text-foreground">Reference</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div className="flex min-h-[56vh] items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted">
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  className="max-h-[72vh] w-full object-contain"
+                />
+              </div>
+              <div className="grid grid-cols-4 gap-3 sm:grid-cols-8">
+                {referenceImages.map((image) => {
+                  const isSelected = selectedImage.src === image.src;
+                  return (
+                    <button
+                      key={image.alt}
+                      type="button"
+                      onClick={() => setSelectedImage(image)}
+                      className={`overflow-hidden rounded-lg border bg-muted transition-all ${
+                        isSelected ? "border-accent ring-2 ring-accent/40" : "border-border hover:border-accent/60"
+                      }`}
+                    >
+                      <img src={image.src} alt={image.alt} className="aspect-square w-full object-cover" loading="lazy" />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
@@ -805,6 +946,9 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Reference */}
+      <ReferencesSection />
 
       {/* Zakaj izbrati nas */}
       <section id="zakaj-nas" className="py-24 bg-background overflow-hidden relative scroll-mt-20">
