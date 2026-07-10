@@ -605,6 +605,25 @@ const ReferencesSection = () => {
     setOpen(true);
   };
 
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+
+      event.preventDefault();
+      setSelectedImage((currentImage) => {
+        const currentIndex = referenceImages.findIndex((image) => image.src === currentImage.src);
+        const offset = event.key === "ArrowRight" ? 1 : -1;
+        const nextIndex = (currentIndex + offset + referenceImages.length) % referenceImages.length;
+        return referenceImages[nextIndex];
+      });
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
   return (
     <section id="reference" className="py-24 bg-background relative overflow-hidden scroll-mt-20">
       <GridPattern className="top-0 right-0 text-foreground opacity-40" />
