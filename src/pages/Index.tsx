@@ -46,8 +46,7 @@ import flack12 from "@/assets/flack12.jpg";
 import flack13 from "@/assets/flack13.jpg";
 
 /* ─── Web3Forms ─── */
-// TODO: zamenjaj s svojim Web3Forms access key-em (https://web3forms.com — brezplačno).
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+const WEB3FORMS_ACCESS_KEY = "0ff44a6b-0868-4db8-933b-044573c76ee2";
 
 /* ─── Animation Variants ─── */
 const fadeUp = {
