@@ -936,15 +936,14 @@ const Index = () => {
               Vaše mnenje pomaga drugim pri izbiri mojstra in nam pri nadaljnjem delu.
             </motion.p>
           </motion.div>
-          <p className="text-center mb-8"><a href="https://omisli.si/flack-doo/" target="_blank" rel="noopener noreferrer" className="text-accent font-bold underline underline-offset-4">5,0 / 5 · Omisli.si</a></p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 max-w-4xl mx-auto">
             {[
-              {name: "Roberto T.", date: "22. marec 2025", iso: "2025-03-22", quote: "Fantje se držijo dogovorjenega roka So zelo natančni in obvladajo svoj posel. Vse pohvale", url: "https://omisli.si/flack-doo/ocena/o4DrhA/"},
-              {name: "Sabina S.", date: "20. marec 2025", iso: "2025-03-20", quote: "Gospod je zelo prijazen. Drzali so se rokov in dogovora. Pohvalim svetovanje in iskanje resitev.", url: "https://omisli.si/flack-doo/ocena/7r-MCg/"},
+              {name: "Roberto T.", date: "22. marec 2025", iso: "2025-03-22", quote: "Fantje se držijo dogovorjenega roka. So zelo natančni in obvladajo svoj posel. Vse pohvale.", url: "https://omisli.si/flack-doo/ocena/o4DrhA/"},
+              {name: "Sabina S.", date: "20. marec 2025", iso: "2025-03-20", quote: "Gospod je zelo prijazen. Držali so se rokov in dogovora. Pohvalim svetovanje in iskanje rešitev.", url: "https://omisli.si/flack-doo/ocena/7r-MCg/"},
             ].map(review => <figure key={review.url} className="bg-background rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 flex flex-col relative overflow-hidden">
-              <div aria-label="Ocena 5 od 5 na Omisli.si" className="flex gap-1 mb-5">{Array.from({length:5},(_,i)=><Star key={i} aria-hidden="true" className="h-4 w-4 fill-accent text-accent" />)}</div>
+              <div className="flex items-center gap-3 mb-5"><div aria-label="Ocena 5 od 5" className="flex gap-1">{Array.from({length:5},(_,i)=><Star key={i} aria-hidden="true" className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}</div><a href={review.url} target="_blank" rel="noopener noreferrer" className="text-sm text-accent underline underline-offset-4">Omisli.si</a></div>
               <blockquote className="text-foreground leading-relaxed mb-6 flex-1 italic">»{review.quote}«</blockquote>
-              <figcaption className="border-t border-border pt-4"><p className="font-bold">{review.name}</p><time dateTime={review.iso} className="text-xs text-muted-foreground">{review.date}</time><a href={review.url} target="_blank" rel="noopener noreferrer" className="block text-sm text-accent underline underline-offset-4 mt-2">Preberi izvirno oceno na Omisli.si</a></figcaption>
+              <figcaption className="border-t border-border pt-4"><p className="font-bold">{review.name}</p><time dateTime={review.iso} className="text-xs text-muted-foreground">{review.date}</time></figcaption>
             </figure>)}
           </div>
           <div className="text-center">
