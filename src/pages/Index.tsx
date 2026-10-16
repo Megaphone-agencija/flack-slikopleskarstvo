@@ -1,3 +1,4 @@
+import GoogleReviewButton from "@/components/GoogleReviewButton";
 import ReferencesSection from "@/components/ReferencesSection";
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
@@ -177,17 +178,9 @@ const stats = [
   { value: 350, suffix: "+", label: "opleskanih prostorov" },
   { value: 50, suffix: "+", label: "izvedenih projektov" },
   { value: 15, suffix: "+", label: "let izkušenj" },
-  { value: 4.8, suffix: "", label: "ocena strank", decimals: 1 },
 ];
 
-const testimonials = [
-  { quote: "Rok so spoštovali, izvedba je bila natančna in profesionalna.", name: "Roberto T.", location: "Ljubljana", project: "Slikopleskarstvo" },
-  { quote: "Notranje slikopleskarsko delo je bilo opravljeno brezhibno – čiste linije, enakomerne stene. Prostor izgleda popolnoma prenovljen.", name: "Mojca S.", location: "Trzin", project: "Slikopleskarstvo" },
-  { quote: "Razpoke na stenah so popolnoma odpravili in stene zakitali – zdaj so gladke, kot da razpok nikoli ni bilo.", name: "Ana K.", location: "Domžale", project: "Kitanje sten in odprava razpok" },
-  { quote: "Komunikacija je bila prijazna, dogovore so držali in svetovanje je pomagalo.", name: "Sabina S.", location: "Ljubljana", project: "Prenova na ključ" },
-  { quote: "Prebarvali so nam ograjo in okenske okvirje – dolgotrajna zaščita in lep videz. Zelo priporočam!", name: "Janez L.", location: "Ig", project: "Barvanje lesa" },
-  { quote: "Zaključna dela so bila izvedena z neverjetno natančnostjo. Vsak detajl je na svojem mestu – profesionalci v pravem pomenu besede.", name: "Nina M.", location: "Škofljica", project: "Zaključna dela" },
-];
+
 
 /* ─── CountUp ─── */
 const CountUp = ({ target, suffix, decimals = 0 }: { target: number; suffix: string; decimals?: number }) => {
@@ -229,7 +222,7 @@ const CountUp = ({ target, suffix, decimals = 0 }: { target: number; suffix: str
 
 /* ─── Marquee ticker for social proof ─── */
 const MarqueeTicker = () => {
-  const items = ["Cena na ključ", "Vsi mojstri, en račun", "Slikopleskarstvo", "Prenova kopalnic na ključ", "Manjša zaključna dela", "350+ opleskanih prostorov", "50+ projektov", "15+ let izkušenj", "Ocena 4.8/5"];
+  const items = ["Cena na ključ", "Vsi mojstri, en račun", "Slikopleskarstvo", "Prenova kopalnic na ključ", "Manjša zaključna dela", "350+ opleskanih prostorov", "50+ projektov", "15+ let izkušenj"];
   return (
     <div className="relative overflow-hidden bg-accent py-3">
       <motion.div
@@ -345,7 +338,7 @@ const formTrust = [
   { icon: Clock, text: "Odgovor v 24 urah" },
   { icon: Shield, text: "Cena na ključ, brez skritih stroškov" },
   { icon: MapPin, text: "Ljubljana in okolica" },
-  { icon: Star, text: "Ocena strank 4.8/5" },
+  { icon: CheckCircle, text: "Več kot 15 let izkušenj" },
 ];
 
 const ContactSection = () => {
@@ -723,7 +716,7 @@ const Index = () => {
         <DotCluster className="top-6 left-8 text-muted-foreground" />
         <DotCluster className="bottom-6 right-8 text-muted-foreground" />
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-4">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -739,7 +732,7 @@ const Index = () => {
                   <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-accent/5 -mt-4" />
                 </div>
                 <span className="relative block text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight">
-                  <CountUp target={stat.value} suffix={stat.suffix} decimals={stat.decimals ?? 0} />
+                  <CountUp target={stat.value} suffix={stat.suffix} decimals={0} />
                 </span>
                 <span className="relative text-xs md:text-sm text-muted-foreground mt-2 block font-bold uppercase tracking-widest">
                   {stat.label}
@@ -885,12 +878,8 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.7, duration: 0.4 }}
               >
-                <div className="flex items-center gap-1.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-accent-foreground text-accent-foreground" />
-                  ))}
-                </div>
-                <p className="text-xs text-accent-foreground/80 font-bold mt-0.5 text-center">4.8 ocena</p>
+                <p className="text-2xl font-black text-accent-foreground text-center">15+</p>
+                <p className="text-xs text-accent-foreground/80 font-bold text-center">let izkušenj</p>
 
               </motion.div>
             </motion.div>
@@ -942,39 +931,25 @@ const Index = () => {
             <motion.span variants={fadeUp} className="text-accent font-semibold text-sm uppercase tracking-widest">Mnenja strank</motion.span>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mt-2 mb-4">KAJ PRAVIJO NAŠE STRANKE</motion.h2>
             <AnimatedLine className="max-w-[80px] mx-auto mt-4" />
+            <motion.p variants={fadeUp} className="text-muted-foreground max-w-2xl mx-auto mt-6 leading-relaxed">
+              Od slikopleskarskih del do celovitih prenov kopalnic — za nami je več kot 15 let izkušenj.
+              Vaše mnenje pomaga drugim pri izbiri mojstra in nam pri nadaljnjem delu.
+            </motion.p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                custom={i}
-                variants={scaleIn}
-                className="bg-background rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 flex flex-col group relative overflow-hidden"
-              >
-                {/* Decorative quote mark */}
-                <div className="absolute -top-2 -right-2 text-accent/5 text-[120px] font-serif leading-none pointer-events-none select-none">"</div>
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-accent text-accent" />
-                  ))}
-                </div>
-                <blockquote className="text-foreground leading-relaxed mb-6 flex-1 italic relative z-10">
-                  "{t.quote}"
-                </blockquote>
-                <div className="border-t border-border pt-4 flex items-center justify-between">
-                  <div>
-                    <p className="font-bold text-foreground text-sm">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.location}</p>
-                  </div>
-                  <span className="text-xs bg-accent/10 text-accent font-semibold px-3 py-1 rounded-full">{t.project}</span>
-                </div>
-                {/* Bottom accent on hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-              </motion.div>
-            ))}
+          <p className="text-center mb-8"><a href="https://omisli.si/flack-doo/" target="_blank" rel="noopener noreferrer" className="text-accent font-bold underline underline-offset-4">5,0 / 5 · Omisli.si</a></p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 max-w-4xl mx-auto">
+            {[
+              {name: "Roberto T.", date: "22. marec 2025", iso: "2025-03-22", quote: "Fantje se držijo dogovorjenega roka So zelo natančni in obvladajo svoj posel. Vse pohvale", url: "https://omisli.si/flack-doo/ocena/o4DrhA/"},
+              {name: "Sabina S.", date: "20. marec 2025", iso: "2025-03-20", quote: "Gospod je zelo prijazen. Drzali so se rokov in dogovora. Pohvalim svetovanje in iskanje resitev.", url: "https://omisli.si/flack-doo/ocena/7r-MCg/"},
+            ].map(review => <figure key={review.url} className="bg-background rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 flex flex-col relative overflow-hidden">
+              <div aria-label="Ocena 5 od 5 na Omisli.si" className="flex gap-1 mb-5">{Array.from({length:5},(_,i)=><Star key={i} aria-hidden="true" className="h-4 w-4 fill-accent text-accent" />)}</div>
+              <blockquote className="text-foreground leading-relaxed mb-6 flex-1 italic">»{review.quote}«</blockquote>
+              <figcaption className="border-t border-border pt-4"><p className="font-bold">{review.name}</p><time dateTime={review.iso} className="text-xs text-muted-foreground">{review.date}</time><a href={review.url} target="_blank" rel="noopener noreferrer" className="block text-sm text-accent underline underline-offset-4 mt-2">Preberi izvirno oceno na Omisli.si</a></figcaption>
+            </figure>)}
+          </div>
+          <div className="text-center">
+            <p className="text-foreground mb-5">Ste bili z našim delom zadovoljni? Pustite oceno na Googlu.</p>
+            <GoogleReviewButton />
           </div>
         </div>
       </section>

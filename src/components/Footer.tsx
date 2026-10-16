@@ -1,3 +1,4 @@
+import GoogleReviewButton from "@/components/GoogleReviewButton";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.webp";
 
@@ -20,6 +21,7 @@ const Footer = () => {
               <div className="w-10 h-1 bg-accent rounded-full" />
               <span className="text-xs text-primary-foreground/40 font-semibold uppercase tracking-widest">Ljubljana in okolica</span>
             </div>
+            <div className="mt-5"><GoogleReviewButton small /></div>
           </div>
 
           {/* Quick links */}
