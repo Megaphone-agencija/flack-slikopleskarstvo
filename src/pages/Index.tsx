@@ -1,3 +1,5 @@
+import GoogleReviewButton from "@/components/GoogleReviewButton";
+import ReferencesSection from "@/components/ReferencesSection";
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -25,25 +27,13 @@ import {
   HelpCircle,
   Images,
 } from "lucide-react";
+import BathroomSection from "@/components/BathroomSection";
 import heroBg from "@/assets/hero-bg.webp";
 import servicesBg from "@/assets/services-bg.jpg";
 import ctaBg from "@/assets/flack-hero-slikopleskar-barvanje-stanovanja-ljubljana.jpeg";
 import whyUsBg from "@/assets/why-us-bg.webp";
 import serviceSlikopleskarstvo from "@/assets/flack-slikopleskarstvo-barvanje-stene-ljubljana.jpg";
 import serviceZakljucnaDela from "@/assets/flack-manjsa-zakljucna-dela-prestavitev-vticnic-ljubljana.jpg";
-import flack1 from "@/assets/flack1.jpg";
-import flack2 from "@/assets/flack2.jpg";
-import flack3 from "@/assets/flack3.jpg";
-import flack4 from "@/assets/flack4.jpg";
-import flack5 from "@/assets/flack5.jpg";
-import flack6 from "@/assets/flack6.jpg";
-import flack7 from "@/assets/flack7.jpg";
-import flack8 from "@/assets/flack8.jpg";
-import flack9 from "@/assets/flack9.jpg";
-import flack10 from "@/assets/flack10.jpg";
-import flack11 from "@/assets/flack11.jpg";
-import flack12 from "@/assets/flack12.jpg";
-import flack13 from "@/assets/flack13.jpg";
 
 /* ─── Web3Forms ─── */
 const WEB3FORMS_ACCESS_KEY = "0ff44a6b-0868-4db8-933b-044573c76ee2";
@@ -188,35 +178,9 @@ const stats = [
   { value: 350, suffix: "+", label: "opleskanih prostorov" },
   { value: 50, suffix: "+", label: "izvedenih projektov" },
   { value: 15, suffix: "+", label: "let izkušenj" },
-  { value: 4.8, suffix: "", label: "ocena strank", decimals: 1 },
 ];
 
-const testimonials = [
-  { quote: "Rok so spoštovali, izvedba je bila natančna in profesionalna.", name: "Roberto T.", location: "Ljubljana", project: "Slikopleskarstvo" },
-  { quote: "Notranje slikopleskarsko delo je bilo opravljeno brezhibno – čiste linije, enakomerne stene. Prostor izgleda popolnoma prenovljen.", name: "Mojca S.", location: "Trzin", project: "Slikopleskarstvo" },
-  { quote: "Razpoke na stenah so popolnoma odpravili in stene zakitali – zdaj so gladke, kot da razpok nikoli ni bilo.", name: "Ana K.", location: "Domžale", project: "Kitanje sten in odprava razpok" },
-  { quote: "Komunikacija je bila prijazna, dogovore so držali in svetovanje je pomagalo.", name: "Sabina S.", location: "Ljubljana", project: "Prenova na ključ" },
-  { quote: "Prebarvali so nam ograjo in okenske okvirje – dolgotrajna zaščita in lep videz. Zelo priporočam!", name: "Janez L.", location: "Ig", project: "Barvanje lesa" },
-  { quote: "Zaključna dela so bila izvedena z neverjetno natančnostjo. Vsak detajl je na svojem mestu – profesionalci v pravem pomenu besede.", name: "Nina M.", location: "Škofljica", project: "Zaključna dela" },
-];
 
-const referenceImages = [
-  { src: flack1, alt: "Referenčno slikopleskarsko delo FLACK 1" },
-  { src: flack2, alt: "Referenčno slikopleskarsko delo FLACK 2" },
-  { src: flack3, alt: "Referenčno slikopleskarsko delo FLACK 3" },
-  { src: flack4, alt: "Referenčno slikopleskarsko delo FLACK 4" },
-  { src: flack5, alt: "Referenčno slikopleskarsko delo FLACK 5" },
-  { src: flack6, alt: "Referenčno slikopleskarsko delo FLACK 6" },
-  { src: flack7, alt: "Referenčno slikopleskarsko delo FLACK 7" },
-  { src: flack8, alt: "Referenčno slikopleskarsko delo FLACK 8" },
-  { src: flack9, alt: "Referenčno slikopleskarsko delo FLACK 9" },
-  { src: flack10, alt: "Referenčno slikopleskarsko delo FLACK 10" },
-  { src: flack11, alt: "Referenčno slikopleskarsko delo FLACK 11" },
-  { src: flack12, alt: "Referenčno slikopleskarsko delo FLACK 12" },
-  { src: flack13, alt: "Referenčno slikopleskarsko delo FLACK 13" },
-];
-
-const featuredReferenceImages = [referenceImages[1], referenceImages[4], referenceImages[6]];
 
 /* ─── CountUp ─── */
 const CountUp = ({ target, suffix, decimals = 0 }: { target: number; suffix: string; decimals?: number }) => {
@@ -258,7 +222,7 @@ const CountUp = ({ target, suffix, decimals = 0 }: { target: number; suffix: str
 
 /* ─── Marquee ticker for social proof ─── */
 const MarqueeTicker = () => {
-  const items = ["Cena na ključ", "Vsi mojstri, en račun", "Slikopleskarstvo", "Manjša zaključna dela", "350+ opleskanih prostorov", "50+ projektov", "15+ let izkušenj", "Ocena 4.8/5"];
+  const items = ["Cena na ključ", "Vsi mojstri, en račun", "Slikopleskarstvo", "Prenova kopalnic na ključ", "Manjša zaključna dela", "350+ opleskanih prostorov", "50+ projektov", "15+ let izkušenj"];
   return (
     <div className="relative overflow-hidden bg-accent py-3">
       <motion.div
@@ -279,9 +243,11 @@ const MarqueeTicker = () => {
 
 /* ─── FAQ ─── */
 const faqs = [
+  { q: "Ali prenovite celotno kopalnico na ključ?", a: "Da. Prevzamemo celotno prenovo kopalnice: od odstranitve stare opreme in priprave prostora do inštalacij, keramike in montaže sanitarne opreme. Obseg del in izbiro materialov uskladimo ob ogledu." },
+  { q: "Koliko stane prenova kopalnice in koliko časa traja?", a: "Cena in čas izvedbe sta odvisna od velikosti kopalnice, stanja inštalacij, izbranih materialov in obsega posegov. Po ogledu pripravimo ponudbo ter se dogovorimo za termin in potek del." },
   {
     q: "Na katerem območju delate?",
-    a: "Delujemo izključno na območju Ljubljane, okolice in Gorenjske. Če niste prepričani, ali smo na voljo za vašo lokacijo, nas pokličite ali pošljite povpraševanje in vam takoj sporočimo.",
+    a: "Delujemo na območju Ljubljane, okolice, Gorenjske in Notranjske, vključno s Cerknico in Logatcem. Če niste prepričani, ali smo na voljo za vašo lokacijo, nas pokličite ali pošljite povpraševanje in vam takoj sporočimo.",
   },
   {
     q: "Ali pridete na ogled in je ponudba brezplačna?",
@@ -371,17 +337,29 @@ const inputClass =
 const formTrust = [
   { icon: Clock, text: "Odgovor v 24 urah" },
   { icon: Shield, text: "Cena na ključ, brez skritih stroškov" },
-  { icon: MapPin, text: "Ljubljana, okolica in Gorenjska" },
-  { icon: Star, text: "Ocena strank 4.8/5" },
+  { icon: MapPin, text: "Ljubljana in okolica" },
+  { icon: CheckCircle, text: "Več kot 15 let izkušenj" },
 ];
 
 const ContactSection = () => {
+  const [service, setService] = useState("");
+  const isBathroom = service === "Prenova kopalnic";
+  useEffect(() => {
+    const chooseBathroom = () => setService("Prenova kopalnic");
+    window.addEventListener("flack:bathroom-inquiry", chooseBathroom);
+    return () => window.removeEventListener("flack:bathroom-inquiry", chooseBathroom);
+  }, []);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
+    if (import.meta.env.DEV) {
+      setErrorMsg("To je predogled. Obrazec je veljaven; povpraševanje ni bilo poslano.");
+      setStatus("error");
+      return;
+    }
     setStatus("sending");
     setErrorMsg("");
 
@@ -428,7 +406,7 @@ const ContactSection = () => {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/30 mb-5"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-accent">Ljubljana, okolica in Gorenjska</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-accent">Ljubljana in okolica</span>
             </motion.div>
 
             <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
@@ -438,7 +416,7 @@ const ContactSection = () => {
             <AnimatedLine className="max-w-[80px] mb-6" />
             <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed mb-8 max-w-md">
               Izpolnite obrazec in v <span className="text-foreground font-semibold">24 urah</span> se vam oglasimo z
-              nezavezujočo ponudbo. Delamo izključno na območju <span className="text-foreground font-semibold">Ljubljane, okolice in Gorenjske</span> — vsi mojstri, en račun, dogovorjen rok.
+              nezavezujočo ponudbo. Delamo izključno na območju <span className="text-foreground font-semibold">Ljubljane, okolice, Gorenjske in Notranjske</span> — vsi mojstri, en račun, dogovorjen rok.
             </motion.p>
 
             {/* Trust builders */}
@@ -521,35 +499,49 @@ const ContactSection = () => {
 
                 <div>
                   <label htmlFor="service" className="block text-xs font-semibold text-foreground mb-1.5">Storitev *</label>
-                  <select id="service" name="service" required defaultValue="" className={inputClass}>
+                  <select id="service" name="service" required value={service} onChange={(e) => setService(e.target.value)} className={inputClass}>
                     <option value="" disabled>Izberite storitev …</option>
                     {services.map((s) => (
                       <option key={s.title} value={s.title}>{s.title}</option>
                     ))}
+                    <option value="Prenova kopalnic">Prenova kopalnic na ključ</option>
                     <option value="Drugo / splošno povpraševanje">Drugo / splošno povpraševanje</option>
                   </select>
                 </div>
 
-                <div>
-                  <label htmlFor="paintScope" className="block text-xs font-semibold text-foreground mb-1.5">Kaj želite prebarvati?</label>
-                  <select id="paintScope" name="paintScope" defaultValue="" className={inputClass}>
-                    <option value="" disabled>Izberite možnost …</option>
-                    <option value="1–3 prostori">1–3 prostori</option>
-                    <option value="Celo stanovanje">Celo stanovanje</option>
-                    <option value="Celo hišo">Celo hišo</option>
-                  </select>
-                </div>
-
+                {isBathroom ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="bathroomSize" className="block text-xs font-semibold mb-1.5">Približna velikost kopalnice</label>
+                      <input id="bathroomSize" name="bathroomSize" type="number" min="1" step="0.5" placeholder="Površina v m²" className={inputClass} />
+                    </div>
+                    <div>
+                      <label htmlFor="bathroomScope" className="block text-xs font-semibold mb-1.5">Obseg prenove</label>
+                      <select id="bathroomScope" name="bathroomScope" defaultValue="Celotna prenova na ključ" className={inputClass}>
+                        <option>Celotna prenova na ključ</option><option>Potrebujem nasvet glede obsega</option>
+                      </select>
+                    </div>
+                  </div>
+                ) : service === "Slikopleskarstvo" ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="paintScope" className="block text-xs font-semibold mb-1.5">Kaj želite prebarvati?</label>
+                      <select id="paintScope" name="paintScope" defaultValue="" className={inputClass}>
+                        <option value="" disabled>Izberite možnost …</option><option>1–3 prostori</option><option>Celo stanovanje</option><option>Celo hišo</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="paintSize" className="block text-xs font-semibold mb-1.5">Približna površina za pleskanje</label>
+                      <select id="paintSize" name="paintSize" defaultValue="" className={inputClass}>
+                        <option value="" disabled>Izberite velikost …</option><option>0–100 m²</option><option>100–200 m²</option><option>200–300 m²</option><option>300 m²+</option>
+                      </select>
+                    </div>
+                  </div>
+                ) : null}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="paintSize" className="block text-xs font-semibold text-foreground mb-1.5">Kako velik je prostor, ki ga želite prebarvati?</label>
-                    <select id="paintSize" name="paintSize" defaultValue="" className={inputClass}>
-                      <option value="" disabled>Izberite velikost …</option>
-                      <option value="0–100 m²">0–100 m²</option>
-                      <option value="100–200 m²">100–200 m²</option>
-                      <option value="200–300 m²">200–300 m²</option>
-                      <option value="300 m²+">300 m²+</option>
-                    </select>
+                    <label htmlFor="projectLocation" className="block text-xs font-semibold mb-1.5">Kraj izvedbe</label>
+                    <input id="projectLocation" name="projectLocation" autoComplete="address-level2" placeholder="Npr. Ljubljana" className={inputClass} />
                   </div>
                   <div>
                     <label htmlFor="renovationTiming" className="block text-xs font-semibold text-foreground mb-1.5">Kdaj potrebujete prenovo?</label>
@@ -585,7 +577,7 @@ const ContactSection = () => {
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center leading-relaxed">
-                  S pošiljanjem soglašate, da vas kontaktiramo glede vašega povpraševanja. Delamo na območju Ljubljane in okolice.
+                  S pošiljanjem soglašate, da vas kontaktiramo glede vašega povpraševanja. Delamo na območju Ljubljane, okolice, Gorenjske in Notranjske.
                 </p>
               </form>
             )}
@@ -596,139 +588,13 @@ const ContactSection = () => {
   );
 };
 
-const ReferencesSection = () => {
-  const [open, setOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(featuredReferenceImages[0]);
 
-  const openGallery = (image = featuredReferenceImages[0]) => {
-    setSelectedImage(image);
-    setOpen(true);
-  };
-
-  useEffect(() => {
-    if (!open) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-
-      event.preventDefault();
-      setSelectedImage((currentImage) => {
-        const currentIndex = referenceImages.findIndex((image) => image.src === currentImage.src);
-        const offset = event.key === "ArrowRight" ? 1 : -1;
-        const nextIndex = (currentIndex + offset + referenceImages.length) % referenceImages.length;
-        return referenceImages[nextIndex];
-      });
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open]);
-
-  return (
-    <section id="reference" className="py-24 bg-background relative overflow-hidden scroll-mt-20">
-      <GridPattern className="top-0 right-0 text-foreground opacity-40" />
-      <DotCluster className="bottom-12 left-16 text-muted-foreground hidden md:block" />
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <motion.div
-          className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-        >
-          <div className="max-w-2xl">
-            <motion.span variants={fadeUp} className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-widest">
-              <Images className="h-4 w-4" /> Reference
-            </motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mt-2 mb-4">
-              IZBRANA DELA
-            </motion.h2>
-            <AnimatedLine className="max-w-[80px] mt-4" />
-            <motion.p variants={fadeUp} className="text-muted-foreground mt-5 leading-relaxed">
-              Primeri izvedenih slikopleskarskih in zaključnih del. V galeriji si lahko ogledate več detajlov iz naših projektov.
-            </motion.p>
-          </div>
-
-          <Button
-            type="button"
-            size="lg"
-            onClick={() => openGallery()}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold self-start lg:self-auto"
-          >
-            Več
-            <ArrowRight className="h-4 w-4 ml-2" />
-          </Button>
-        </motion.div>
-
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {featuredReferenceImages.map((image, i) => (
-            <motion.button
-              key={image.alt}
-              type="button"
-              onClick={() => openGallery(image)}
-              aria-label="Odpri galerijo referenc"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={i}
-              variants={scaleIn}
-              className="group relative h-[320px] overflow-hidden rounded-2xl border border-border bg-muted shadow-lg"
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(215,60%,8%)]/35 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
-            </motion.button>
-          ))}
-        </div>
-
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogContent className="max-h-[94vh] max-w-[96vw] overflow-y-auto border-border p-4 sm:p-6 xl:max-w-7xl">
-            <DialogHeader className="pr-8">
-              <DialogTitle className="text-2xl font-black tracking-wide text-foreground">Reference</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div className="flex min-h-[56vh] items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted">
-                <img
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  className="max-h-[72vh] w-full object-contain"
-                />
-              </div>
-              <div className="grid grid-cols-4 gap-3 sm:grid-cols-8">
-                {referenceImages.map((image) => {
-                  const isSelected = selectedImage.src === image.src;
-                  return (
-                    <button
-                      key={image.alt}
-                      type="button"
-                      onClick={() => setSelectedImage(image)}
-                      className={`overflow-hidden rounded-lg border bg-muted transition-all ${
-                        isSelected ? "border-accent ring-2 ring-accent/40" : "border-border hover:border-accent/60"
-                      }`}
-                    >
-                      <img src={image.src} alt={image.alt} className="aspect-square w-full object-cover" loading="lazy" />
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </div>
-    </section>
-  );
-};
 
 /* ─── Main Component ─── */
 const Index = () => {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   // Ob prihodu z anchor-jem (npr. /#kontakt ali preusmeritev s stare podstrani) skrolaj na sekcijo
   useEffect(() => {
@@ -756,8 +622,6 @@ const Index = () => {
 
         {/* Decorative elements in hero */}
         <GridPattern className="top-0 right-0 text-primary-foreground opacity-30" />
-        <FloatingShape delay={0} className="top-1/4 right-[15%] hidden lg:block" />
-        <FloatingShape delay={3} className="bottom-1/4 right-[8%] hidden lg:block" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-32 pb-20">
           <motion.div
@@ -772,7 +636,7 @@ const Index = () => {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 backdrop-blur-sm mb-5 self-start"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/90">Ljubljana, okolica in Gorenjska</span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/90">Ljubljana in okolica</span>
             </motion.div>
 
             {/* Animated accent line before heading */}
@@ -787,7 +651,9 @@ const Index = () => {
             <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 tracking-wide">
               <span className="text-primary-foreground">PREPUSTITE</span>
               <br />
-              <span className="text-primary-foreground">STENE</span>
+              <span className="text-primary-foreground">STENE IN</span>
+              <br />
+              <span className="text-primary-foreground">KOPALNICO</span>
               <br />
               <motion.span
                 className="text-accent inline-block"
@@ -795,11 +661,16 @@ const Index = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               >
-                MOJSTROM.
+                MOJSTROM
               </motion.span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-lg md:text-xl text-primary-foreground/75 mb-10 leading-relaxed max-w-xl font-medium">
-              FLACK d.o.o. — slikopleskarstvo in zaključna dela z leti izkušenj. Čiste linije, urejeno delovišče in dogovorjen rok. Brez presenečenj.
+            <motion.p variants={fadeUp} className="text-lg md:text-xl text-primary-foreground/85 mb-4 leading-relaxed max-w-xl font-semibold">
+              FLACK d.o.o. — slikopleskarstvo in kopalnice na ključ z več kot 15 leti izkušenj.
+            </motion.p>
+            <motion.p variants={fadeUp} className="text-base md:text-lg text-primary-foreground/75 mb-8 leading-relaxed max-w-xl">
+              Od sveže prepleskanih sten do v celoti prenovljene kopalnice.<br />
+              Natančna izvedba, urejeno delovišče in dogovorjen rok.<br />
+              <span className="font-semibold text-primary-foreground">Brez presenečenj.</span>
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="text-base font-bold bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg shadow-accent/25 h-12 px-8 group">
@@ -833,23 +704,8 @@ const Index = () => {
 
           </motion.div>
 
-          {/* Corner accents */}
-          <CornerAccent className="bottom-8 right-8 text-primary-foreground hidden lg:block" flip />
         </div>
 
-        {/* Hero scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-          style={{ opacity: heroOpacity }}
-        >
-          <span className="text-[10px] text-primary-foreground/40 uppercase tracking-[0.3em] font-semibold">Scroll</span>
-          <motion.div
-            className="w-[1px] h-8 bg-gradient-to-b from-primary-foreground/40 to-transparent"
-            animate={{ scaleY: [0.3, 1, 0.3] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            style={{ originY: 0 }}
-          />
-        </motion.div>
       </section>
 
       {/* Marquee ticker */}
@@ -860,7 +716,7 @@ const Index = () => {
         <DotCluster className="top-6 left-8 text-muted-foreground" />
         <DotCluster className="bottom-6 right-8 text-muted-foreground" />
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-4">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -876,7 +732,7 @@ const Index = () => {
                   <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-accent/5 -mt-4" />
                 </div>
                 <span className="relative block text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-tight">
-                  <CountUp target={stat.value} suffix={stat.suffix} decimals={stat.decimals ?? 0} />
+                  <CountUp target={stat.value} suffix={stat.suffix} decimals={0} />
                 </span>
                 <span className="relative text-xs md:text-sm text-muted-foreground mt-2 block font-bold uppercase tracking-widest">
                   {stat.label}
@@ -902,11 +758,11 @@ const Index = () => {
             viewport={{ once: true, amount: 0.3 }}
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
           >
-            <motion.span variants={fadeUp} className="text-accent font-semibold text-sm uppercase tracking-widest">Kaj ponujamo</motion.span>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mt-2 mb-4">NAŠE STORITVE</motion.h2>
+            <motion.span variants={fadeUp} className="text-accent font-semibold text-sm uppercase tracking-widest">Slikopleskarstvo in zaključna dela</motion.span>
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mt-2 mb-4">SLIKOPLESKARSTVO</motion.h2>
             <AnimatedLine className="max-w-[80px] mx-auto mt-4" />
             <motion.p variants={fadeUp} className="text-muted-foreground max-w-xl mx-auto mt-4">
-              Slikopleskarstvo in zaključna dela za stanovanjske in poslovne objekte — <span className="text-foreground font-semibold">na območju Ljubljane, okolice in Gorenjske.</span>
+              Slikopleskarstvo in zaključna dela za stanovanjske in poslovne objekte — <span className="text-foreground font-semibold">na območju Ljubljane, okolice, Gorenjske in Notranjske.</span>
             </motion.p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5">
@@ -965,6 +821,8 @@ const Index = () => {
         </div>
       </section>
 
+      <BathroomSection />
+
       {/* Reference */}
       <ReferencesSection />
 
@@ -1020,12 +878,8 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.7, duration: 0.4 }}
               >
-                <div className="flex items-center gap-1.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-accent-foreground text-accent-foreground" />
-                  ))}
-                </div>
-                <p className="text-xs text-accent-foreground/80 font-bold mt-0.5 text-center">4.8 ocena</p>
+                <p className="text-2xl font-black text-accent-foreground text-center">15+</p>
+                <p className="text-xs text-accent-foreground/80 font-bold text-center">let izkušenj</p>
 
               </motion.div>
             </motion.div>
@@ -1077,39 +931,24 @@ const Index = () => {
             <motion.span variants={fadeUp} className="text-accent font-semibold text-sm uppercase tracking-widest">Mnenja strank</motion.span>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-foreground mt-2 mb-4">KAJ PRAVIJO NAŠE STRANKE</motion.h2>
             <AnimatedLine className="max-w-[80px] mx-auto mt-4" />
+            <motion.p variants={fadeUp} className="text-muted-foreground max-w-2xl mx-auto mt-6 leading-relaxed">
+              Od slikopleskarskih del do celovitih prenov kopalnic — za nami je več kot 15 let izkušenj.
+              Vaše mnenje pomaga drugim pri izbiri mojstra in nam pri nadaljnjem delu.
+            </motion.p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                custom={i}
-                variants={scaleIn}
-                className="bg-background rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 flex flex-col group relative overflow-hidden"
-              >
-                {/* Decorative quote mark */}
-                <div className="absolute -top-2 -right-2 text-accent/5 text-[120px] font-serif leading-none pointer-events-none select-none">"</div>
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-accent text-accent" />
-                  ))}
-                </div>
-                <blockquote className="text-foreground leading-relaxed mb-6 flex-1 italic relative z-10">
-                  "{t.quote}"
-                </blockquote>
-                <div className="border-t border-border pt-4 flex items-center justify-between">
-                  <div>
-                    <p className="font-bold text-foreground text-sm">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.location}</p>
-                  </div>
-                  <span className="text-xs bg-accent/10 text-accent font-semibold px-3 py-1 rounded-full">{t.project}</span>
-                </div>
-                {/* Bottom accent on hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 max-w-4xl mx-auto">
+            {[
+              {name: "Roberto T.", date: "22. marec 2025", iso: "2025-03-22", quote: "Fantje se držijo dogovorjenega roka. So zelo natančni in obvladajo svoj posel. Vse pohvale.", url: "https://omisli.si/flack-doo/ocena/o4DrhA/"},
+              {name: "Sabina S.", date: "20. marec 2025", iso: "2025-03-20", quote: "Gospod je zelo prijazen. Držali so se rokov in dogovora. Pohvalim svetovanje in iskanje rešitev.", url: "https://omisli.si/flack-doo/ocena/7r-MCg/"},
+            ].map(review => <figure key={review.url} className="bg-background rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 flex flex-col relative overflow-hidden">
+              <div className="flex items-center gap-3 mb-5"><div aria-label="Ocena 5 od 5" className="flex gap-1">{Array.from({length:5},(_,i)=><Star key={i} aria-hidden="true" className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}</div><a href={review.url} target="_blank" rel="noopener noreferrer" className="text-sm text-accent underline underline-offset-4">Omisli.si</a></div>
+              <blockquote className="text-foreground leading-relaxed mb-6 flex-1 italic">»{review.quote}«</blockquote>
+              <figcaption className="border-t border-border pt-4"><p className="font-bold">{review.name}</p><time dateTime={review.iso} className="text-xs text-muted-foreground">{review.date}</time></figcaption>
+            </figure>)}
+          </div>
+          <div className="text-center">
+            <p className="text-foreground mb-5">Ste bili z našim delom zadovoljni? Pustite oceno na Googlu.</p>
+            <GoogleReviewButton />
           </div>
         </div>
       </section>
