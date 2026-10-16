@@ -18,7 +18,7 @@ const Footer = () => {
             </p>
             <div className="flex items-center gap-2">
               <div className="w-10 h-1 bg-accent rounded-full" />
-              <span className="text-xs text-primary-foreground/40 font-semibold uppercase tracking-widest">Ljubljana, okolica in Gorenjska</span>
+              <span className="text-xs text-primary-foreground/40 font-semibold uppercase tracking-widest">Ljubljana in okolica</span>
             </div>
           </div>
 
@@ -28,7 +28,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { label: "Domov", href: "#domov" },
-                { label: "Storitve", href: "#storitve" },
+                { label: "Slikopleskarstvo", href: "#storitve" },
+                { label: "Kopalnice", href: "#prenova-kopalnic" },
                 { label: "Zakaj nas", href: "#zakaj-nas" },
                 { label: "Mnenja", href: "#mnenja" },
                 { label: "Vprašanja", href: "#faq" },
@@ -51,7 +52,7 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-5 text-sm uppercase tracking-widest text-primary-foreground/80">Storitve</h4>
             <ul className="space-y-3">
-              {["Slikopleskarstvo", "Manjša zaključna dela"].map((s) => (
+              {["Slikopleskarstvo", "Manjša zaključna dela", "Prenova kopalnic na ključ"].map((s) => (
                 <li key={s}>
                   <span className="text-sm text-primary-foreground/55">{s}</span>
                 </li>

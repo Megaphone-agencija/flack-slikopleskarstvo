@@ -8,7 +8,8 @@ import logo from "@/assets/logo.webp";
 
 const navLinks = [
   { label: "Domov", id: "domov" },
-  { label: "Storitve", id: "storitve" },
+  { label: "Slikopleskarstvo", id: "storitve" },
+  { label: "Kopalnice", id: "prenova-kopalnic" },
   { label: "Reference", id: "reference" },
   { label: "Zakaj nas", id: "zakaj-nas" },
   { label: "Mnenja", id: "mnenja" },
@@ -88,11 +89,11 @@ const Navbar = () => {
         {/* Logo */}
         <button
           onClick={() => handleNav("domov")}
-          className={`flex items-center gap-3 transition-colors ${onDark ? "text-primary-foreground" : "text-foreground"}`}
+          className={`flex shrink-0 items-center gap-2 xl:gap-3 transition-colors ${onDark ? "text-primary-foreground" : "text-foreground"}`}
         >
-          <img src={logo} alt="FLACK logotip" className="h-14 w-14 rounded-full object-cover shadow-sm" />
+          <img src={logo} alt="FLACK logotip" className="h-12 w-12 lg:h-10 lg:w-10 xl:h-14 xl:w-14 rounded-full object-cover shadow-sm" />
           <span className="flex flex-col leading-none text-left">
-            <span className="text-2xl md:text-3xl font-black tracking-tight">FLACK</span>
+            <span className="text-2xl xl:text-3xl font-black tracking-tight">FLACK</span>
             <span className={`text-[11px] font-medium tracking-wide mt-1 ${onDark ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
               Barva vašega doma
             </span>
@@ -100,14 +101,14 @@ const Navbar = () => {
         </button>
 
         {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-0 xl:gap-1">
           {navLinks.map((link) => {
             const isActive = active === link.id;
             return (
               <li key={link.id}>
                 <button
                   onClick={() => handleNav(link.id)}
-                  className={`relative px-4 py-2 text-sm font-semibold uppercase tracking-wider transition-colors ${
+                  className={`relative px-1.5 xl:px-2 2xl:px-3 py-2 text-xs xl:text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-colors ${
                     onDark
                       ? isActive
                         ? "text-primary-foreground"
@@ -132,10 +133,10 @@ const Navbar = () => {
         </ul>
 
         {/* Desktop kontakt + CTA */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex shrink-0 items-center gap-3">
           <a
             href="tel:+386040296555"
-            className={`text-sm font-semibold transition-colors flex items-center gap-1.5 ${
+            className={`text-xs xl:text-sm whitespace-nowrap font-semibold transition-colors flex items-center gap-1.5 ${
               onDark ? "text-primary-foreground/70 hover:text-primary-foreground" : "text-muted-foreground hover:text-primary"
             }`}
           >
@@ -145,7 +146,7 @@ const Navbar = () => {
           <Button
             onClick={() => handleNav("kontakt")}
             size="sm"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-lg shadow-accent/20 group"
+            className="hidden 2xl:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-lg shadow-accent/20 group"
           >
             Stopite v kontakt
             <ArrowRight className="h-4 w-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
